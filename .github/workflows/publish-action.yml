@@ -27,7 +27,7 @@ jobs:
          git fetch --tags
          LATEST_TAG=$(git tag --sort=-v:refname | head -n 1)
 
-         if[ -z "$LATEST_TAG"]; then
+         if [ -z "$LATEST_TAG"]; then
            echo "latest=none" >> $GITHUB_OUTPUT
          else
            echo "latest=$LATEST_TAG" >> $GITHUB_OUTPUT
