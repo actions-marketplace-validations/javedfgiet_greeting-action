@@ -1,0 +1,23 @@
+name: Publish Custom Action
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish-action:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.1.0
+        with:
+          fetch-depth: 0 #Require to read tag history
+      - name: Read Major version
+        id: major-version
+        run: |
+         echo "major=${{vars.ACTION_MAJOR_VERSION}}" >> $GITHUN_OUTPUT
+         echo "Using major version - ${{vars.ACTION_MAJOR_VERSION}}"
