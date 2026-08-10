@@ -34,4 +34,32 @@ jobs:
          fi
            echo "Latest tag = ${LATEST_TAG:-none}"
 
+      - name: Calculate Next Tag version
+        id: next-tag
+        run: |
+         MAJOR=${{steps.major-version.outputs.major}}
+         LATEST_TAG=${{steps.tags.outputs.latest}}
+         echo "Lastest Tag is $LATEST_TAG"
+         echo "Major version is $MAJOR"
+         if ["$LATEST_TAG" = "none"]; then
+           NEXT_TAG="${MAJOR}.0"
+           echo "next=$NEXT_TAG" >> $GITHUB_OUTPUT
+           echo "No previous tags found. new tag = $NEXT_TAG"
+           exit 0
+         fi
+         LATEST_MAJOR=$(echo $LATEST_TAG | cut -d '.' -f1)
+         if ["$LATEST_MAJOR"="$MAJOR"]; then
+           MINOR=$(echo $LATEST_TAG | cut -d '.' -f2)
+           NEXT_MINOR=$((MINOR+1))
+           NEXT_TAG="${MAJOR}.${NEXT_MINOR}"
+         else:
+           NEXT_TAG="${MAJOR}.0"
+         fi
+          echo "NEXT tag = $NEXT_TAG"
+          echo "next=$NEXT_TAG" >> $GITHUB_OUTPUT
+
+
+        
+         
+
         
