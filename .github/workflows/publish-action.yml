@@ -19,5 +19,5 @@ jobs:
       - name: Read Major version
         id: major-version
         run: |
-         echo "major=${{vars.ACTION_MAJOR_VERSION}}" >> $GITHUN_OUTPUT
+         echo "major=${{vars.ACTION_MAJOR_VERSION}}" >> $GITHUB_OUTPUT
          echo "Using major version - ${{vars.ACTION_MAJOR_VERSION}}"
