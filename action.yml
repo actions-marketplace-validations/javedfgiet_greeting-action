@@ -1,0 +1,25 @@
+name:  "Simple Greeting Action"
+description: A Custom GitHub Action to print greeting message
+
+inputs:
+  username:
+     description: "Name of user to greet"
+     required: true
+  season:
+   description: "Name of season"
+   required: false
+   default: Summer
+
+outputs:
+    message : 
+       description: "Generated Greeting Message"
+
+runs:
+   using: composite
+   steps:
+      - name: Print greeting
+        shell: bash
+        run: |
+         echo "Hello ${{inputs.username}}, welcome to ${{inputs.season}} season."
+         echo "message=Hello ${{inputs.username}}" >> $GitHUB_OUTPUT
+  
