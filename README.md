@@ -7,3 +7,18 @@ It is intentionally simple, making it ideal for:
 - Learning custom action structure
 - Teaching composite action concept in CI/CD
 - Dmonstrating inputes, outputs and step execution
+## What this action does
+ - Takes a **username** as imput **mandatory**
+ - Takes a **season** as input as `Summer, Winter, Rainy - **optional**, default season is **summer**
+ - Print a greeting message
+ - Return output value calles `message`.
+
+## Sample usage
+```
+ - name: Greeting
+   id: greet
+   uses: ./
+   with:
+     username: javedfgiet
+     season: winter
+```
