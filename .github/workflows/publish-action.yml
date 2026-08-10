@@ -48,7 +48,7 @@ jobs:
            exit 0
          fi
          LATEST_MAJOR=$(echo $LATEST_TAG | cut -d '.' -f1)
-         if [ "$LATEST_MAJOR"="$MAJOR" ]; then
+         if [ "$LATEST_MAJOR" = "$MAJOR" ]; then
            MINOR=$(echo $LATEST_TAG | cut -d '.' -f2)
            NEXT_MINOR=$((MINOR+1))
            NEXT_TAG="${MAJOR}.${NEXT_MINOR}"
