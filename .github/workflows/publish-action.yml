@@ -58,7 +58,18 @@ jobs:
 
           echo "NEXT tag = $NEXT_TAG"
           echo "next=$NEXT_TAG" >> $GITHUB_OUTPUT
+     
+      - name: Create and Push Tag
+        run: |
+          TAG="${{steps.next-tag.outputs.next}}"
+          git tag "$TAG"
+          git push origin "$TAG"
 
+      - name: Publish GithHub Action
+        uses: softprops/action-gh-release@v2
+        with:
+           tag_name: ${{ steps.next-tag.outputs.next }}
+           generate_release_notes: true
 
         
          
