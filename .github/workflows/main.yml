@@ -13,7 +13,7 @@ jobs:
 
       - name: Calling custom action yml
         id: greet
-        uses: ./
+        uses: javedfgiet/greeting-action@v1.0
         with:
           username: JavedAhmad
 
